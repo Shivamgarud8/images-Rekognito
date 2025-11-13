@@ -5,7 +5,16 @@ This project demonstrates a **fully serverless AI-powered image recognition syst
 Whenever a user uploads an image to an **S3 bucket**, it **automatically triggers a Lambda function**, which uses **AWS Rekognition** to analyze the image and then sends the **detection details via SNS** (email notification).
 
 ---
-
+![AWS Lambda](https://img.shields.io/badge/AWS%20Lambda-Serverless-orange?logo=awslambda)
+![Amazon S3](https://img.shields.io/badge/Amazon%20S3-Storage-red?logo=amazons3)
+![AWS Rekognition](https://img.shields.io/badge/AWS%20Rekognition-Image%20AI-blue?logo=amazonaws)
+![Amazon SNS](https://img.shields.io/badge/Amazon%20SNS-Notifications-purple?logo=amazon)
+![AWS IAM](https://img.shields.io/badge/AWS%20IAM-Security-yellow?logo=amazon)
+![Serverless](https://img.shields.io/badge/Architecture-Serverless-green?logo=serverless)
+![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
+![Region](https://img.shields.io/badge/Region-ap--south--1%20(Mumbai)-teal?logo=amazonaws)
+![Automation](https://img.shields.io/badge/Trigger-S3%20Event%20Driven-lightgrey?logo=amazon)
+![License](https://img.shields.io/badge/License-MIT-lightgreen?logo=openai)
 ## 🚀 Features
 
 - 🖼️ **Automatic Image Analysis** using AWS Rekognition  
