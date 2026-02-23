@@ -25,7 +25,7 @@ This system requires **no servers to manage**, making it scalable, cost-effectiv
 ![Automation](https://img.shields.io/badge/Trigger-S3%20Event%20Driven-lightgrey?logo=amazon)
 ![License](https://img.shields.io/badge/License-MIT-lightgreen?logo=openai)
 
-## 🚀 Features
+##  Features
 
 - Automatic image analysis using AWS Rekognition  
 - Event-driven architecture using S3 triggers  
@@ -37,7 +37,7 @@ This system requires **no servers to manage**, making it scalable, cost-effectiv
 
 ---
 
-## 🧩 Architecture Overview
+## Architecture Overview
 
 ### Workflow
 
@@ -50,7 +50,7 @@ This system requires **no servers to manage**, making it scalable, cost-effectiv
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Service | Purpose |
 |----------|----------|
@@ -63,7 +63,7 @@ This system requires **no servers to manage**, making it scalable, cost-effectiv
 
 ---
 
-# ⚙️ Step-by-Step Setup Guide (Beginner Friendly)
+#  Step-by-Step Setup Guide (Beginner Friendly)
 
 ## Step 1: Create S3 Bucket
 
@@ -184,15 +184,14 @@ You will receive detected labels and confidence scores.
 
 ---
 
-## 🌍 Region Configuration
+##  Region Configuration
 
 Region used: **ap-south-1 (Mumbai)**  
 
 Note: AWS Rekognition must be available in the selected region.
 
 ---
-
-## 🔐 Security Notes
+##  Security Notes
 
 - Use least privilege IAM permissions in production
 - Restrict S3 bucket public access
@@ -201,8 +200,4 @@ Note: AWS Rekognition must be available in the selected region.
 
 ---
 
-## 📂 Clone Repository
 
-```bash
-git clone https://github.com/Shivamgarud8/images-Rekognito.git
-cd images-Rekognito
