@@ -207,8 +207,9 @@ Note: AWS Rekognition must be available in the selected region.
 👨‍💻 **Developed By:**  
 **Shivam Garud**  
 🧠 *DevOps & Cloud Engineer*  
-💼 * DevOps Engineer | CI/CD | Docker | Kubernetes | Terraform | Ansible | AWS | Linux | Cloud Automation | Infrastructure as Code!*  
+💼 *DevOps Engineer | CI/CD | Docker | Kubernetes | Terraform | Ansible | AWS | Linux | Cloud Automation | Infrastructure as Code!*  
 🌐 [GitHub Profile](https://github.com/Shivamgarud8)
 🌐 [Medium blog](https://medium.com/@shivam.garud2011)
 🌐 [linkedin](www.linkedin.com/in/shivam-garud)
 🌐 [portfolio](https://shivam-garud.vercel.app/)
+
