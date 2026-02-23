@@ -1,9 +1,20 @@
-# 🧠 Serverless Magic with AWS Rekognition  
+#  Serverless Magic with AWS Rekognition  
 ### Automated Image Analysis System using S3, Lambda, SNS & Rekognition
 
-This project demonstrates a **fully serverless AI-powered image recognition system** built using AWS services.  
-Whenever a user uploads an image to an **S3 bucket**, it **automatically triggers a Lambda function**, which uses **AWS Rekognition** to analyze the image and then sends the **detection details via SNS** (email notification).
+##  About The Project
 
+This project demonstrates a **fully serverless AI-powered image recognition system** built using AWS cloud services.
+
+Whenever a user uploads an image to an Amazon S3 bucket:
+
+1. The upload event automatically triggers an AWS Lambda function.
+2. The Lambda function calls AWS Rekognition to analyze the image.
+3. Rekognition detects labels and confidence scores.
+4. The results are sent to users via Amazon SNS (email notification).
+
+This system requires **no servers to manage**, making it scalable, cost-effective, and production-ready.
+
+---
 ---
 ![AWS Lambda](https://img.shields.io/badge/AWS%20Lambda-Serverless-orange?logo=awslambda)
 ![Amazon S3](https://img.shields.io/badge/Amazon%20S3-Storage-red?logo=amazons3)
@@ -15,23 +26,29 @@ Whenever a user uploads an image to an **S3 bucket**, it **automatically trigger
 ![Region](https://img.shields.io/badge/Region-ap--south--1%20(Mumbai)-teal?logo=amazonaws)
 ![Automation](https://img.shields.io/badge/Trigger-S3%20Event%20Driven-lightgrey?logo=amazon)
 ![License](https://img.shields.io/badge/License-MIT-lightgreen?logo=openai)
+
 ## 🚀 Features
 
-- 🖼️ **Automatic Image Analysis** using AWS Rekognition  
-- 📦 **S3 Trigger Integration** – runs instantly when a new image is uploaded  
-- 📤 **SNS Notifications** – sends analysis results directly to your email  
-- 🔐 **IAM Role Configuration** – secure and permission-based access  
-- ⚙️ **Environment Variables** for easy configuration without code changes  
-- ☁️ **Completely Serverless** – no servers to manage or scale  
+- Automatic image analysis using AWS Rekognition  
+- Event-driven architecture using S3 triggers  
+- Email notifications via SNS  
+- Secure IAM role-based access  
+- Configurable environment variables  
+- Fully serverless architecture  
+- Python 3.12 runtime  
 
 ---
 
 ## 🧩 Architecture Overview
 
-1. **S3 Bucket** → Uploads an image (`.jpg`, `.png`, etc.)  
-2. **Lambda Function** → Automatically triggered  
-3. **AWS Rekognition** → Analyzes the uploaded image  
-4. **SNS Topic** → Sends results to subscribed users  
+### Workflow
+
+1. User uploads an image (.jpg, .png, etc.) to S3
+2. S3 triggers the Lambda function
+3. Lambda sends the image to AWS Rekognition
+4. Rekognition detects labels and confidence levels
+5. Lambda publishes the results to SNS
+6. SNS sends email notification to subscribed users
 
 ---
 
@@ -39,65 +56,155 @@ Whenever a user uploads an image to an **S3 bucket**, it **automatically trigger
 
 | Service | Purpose |
 |----------|----------|
-| **AWS S3** | Stores uploaded images |
-| **AWS Lambda** | Executes image analysis automatically |
-| **AWS Rekognition** | Detects labels, objects, and confidence |
-| **AWS SNS** | Sends results as notifications |
-| **AWS IAM** | Manages permissions and access control |
+| Amazon S3 | Stores uploaded images |
+| AWS Lambda | Executes backend logic automatically |
+| AWS Rekognition | Performs image analysis |
+| Amazon SNS | Sends notification emails |
+| AWS IAM | Handles permissions and security |
+| Python 3.12 | Lambda runtime language |
 
 ---
 
-## ⚙️ Setup Guide
+# ⚙️ Step-by-Step Setup Guide (Beginner Friendly)
 
-Follow the steps below to set up your own **Image Analysis System**:
+## Step 1: Create S3 Bucket
 
-###  Clone the Repository
-```bash
-git clone https://github.com/Shivamgarud8/images-Rekognito.git
-cd images-Rekognito
+1. Go to AWS Console  
+2. Open S3  
+3. Click "Create Bucket"  
+4. Bucket name: `user-uploaded-images-ai`  
+5. Select Region: **ap-south-1 (Mumbai)**  
+6. Keep default settings and create bucket  
 
-```
+---
 
-###  Add Environment Variables
+## Step 2: Create SNS Topic
 
-Add the following environment variables in your Lambda function configuration:
+1. Open SNS service  
+2. Click "Create Topic"  
+3. Select Standard  
+4. Topic name: `AI-Rekognito`  
+5. Create topic  
+6. Copy the Topic ARN  
+
+### Create Email Subscription
+
+1. Open the topic  
+2. Click "Create Subscription"  
+3. Protocol: Email  
+4. Enter your email address  
+5. Confirm subscription from your inbox  
+
+---
+
+## Step 3: Create IAM Role for Lambda
+
+1. Open IAM  
+2. Click Roles → Create Role  
+3. Select AWS Service  
+4. Choose Lambda  
+5. Attach the following policies:
+
+- AmazonS3ReadOnlyAccess  
+- AmazonRekognitionFullAccess  
+- AmazonSNSFullAccess  
+- AWSLambdaBasicExecutionRole  
+
+6. Name the role: `Lambda-Rekognition-Role`  
+7. Create role  
+
+---
+
+## Step 4: Create Lambda Function
+
+1. Open AWS Lambda  
+2. Click "Create Function"  
+3. Select "Author from scratch"  
+
+### Basic Configuration
+
+- Function name: `ImageAnalysisFunction`
+- Runtime: Python 3.12
+- Architecture: x86_64
+- Execution Role: Use existing role
+- Select: `Lambda-Rekognition-Role`
+
+Click "Create Function"
+
+---
+
+## Step 5: Add Environment Variables
+
+Go to:
+
+Lambda → Configuration → Environment Variables → Edit
+
+Add:
 
 | Key | Value |
 |-----|--------|
-| **BUCKET_NAME** | user-uploaded-images-ai |
-| **MAX_LABELS** | 5 |
-| **MIN_CONFIDENCE** | 80 |
-| **REGION** | ap-south-1 |
-| **SNS_ARN** | arn:aws:sns:ap-south-1:<YOUR_ACCOUNT_ID>:AI-Rekognito |
+| BUCKET_NAME | user-uploaded-images-ai |
+| MAX_LABELS | 5 |
+| MIN_CONFIDENCE | 80 |
+| REGION | ap-south-1 |
+| SNS_ARN | arn:aws:sns:ap-south-1:<YOUR_ACCOUNT_ID>:AI-Rekognito |
 
-> ⚠️ **Note:** Region updated to **Mumbai (ap-south-1)** due to AWS Rekognition service availability.
-
-### 7️⃣ Add S3 Trigger
-
-You can set up an S3 trigger for your Lambda function using the AWS Management Console or AWS CLI.
-
-
-1. Navigate to your **Lambda Function** → **Configuration** → **Triggers**  
-2. Click **Add Trigger**  
-3. Select **S3** as the trigger source  
-4. Choose your bucket → `user-uploaded-images-ai`  
-5. Set **Event type** to `All object create events`  
-6. Click **Add**
+Save changes.
 
 ---
 
+## Step 6: Upload Lambda Code
+
+Replace the default Lambda code with your project Python file from this repository.
+
+Deploy the function.
 
 ---
-👩‍🏫 **Guided and Supported by [Trupti Mane Ma’am](https://github.com/iamtruptimane)**  
+
+## Step 7: Add S3 Trigger
+
+1. Open Lambda function  
+2. Go to Configuration → Triggers  
+3. Click "Add Trigger"  
+4. Select S3  
+5. Choose bucket: `user-uploaded-images-ai`  
+6. Event type: All object create events  
+7. Add trigger  
+
+Now your Lambda will automatically execute when a new image is uploaded.
+
 ---
 
-👨‍💻 **Developed By:**  
-**Shivam Garud**  
-🧠 *DevOps & Cloud Enthusiast*  
-💼 *Automating deployments, one pipeline at a time!*  
+## Step 8: Test the System
 
-## 🔗 Links
+1. Go to S3  
+2. Upload any image file  
+3. Wait a few seconds  
+4. Check your email  
 
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](www.linkedin.com/in/shivam-garud-371b5a307/)
-[![Medium-blog](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://medium.com/@shivam.garud2011/serverless-magic-with-aws-rekognition-automated-image-analysis-system-c71f50b3c5d1/)
+You will receive detected labels and confidence scores.
 
+---
+
+## 🌍 Region Configuration
+
+Region used: **ap-south-1 (Mumbai)**  
+
+Note: AWS Rekognition must be available in the selected region.
+
+---
+
+## 🔐 Security Notes
+
+- Use least privilege IAM permissions in production
+- Restrict S3 bucket public access
+- Validate file types before processing
+- Monitor Lambda logs in CloudWatch
+
+---
+
+## 📂 Clone Repository
+
+```bash
+git clone https://github.com/Shivamgarud8/images-Rekognito.git
+cd images-Rekognito
