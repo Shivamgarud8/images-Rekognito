@@ -13,8 +13,6 @@ Whenever a user uploads an image to an Amazon S3 bucket:
 4. The results are sent to users via Amazon SNS (email notification).
 
 This system requires **no servers to manage**, making it scalable, cost-effective, and production-ready.
-
----
 ---
 ![AWS Lambda](https://img.shields.io/badge/AWS%20Lambda-Serverless-orange?logo=awslambda)
 ![Amazon S3](https://img.shields.io/badge/Amazon%20S3-Storage-red?logo=amazons3)
