@@ -92,7 +92,7 @@ This system requires **no servers to manage**, making it scalable, cost-effectiv
 3. Protocol: Email  
 4. Enter your email address  
 5. Confirm subscription from your inbox  
-
+![jenkins](img/sns2.png)
 ---
 
 ## Step 3: Create IAM Role for Lambda
@@ -107,7 +107,7 @@ This system requires **no servers to manage**, making it scalable, cost-effectiv
 - AmazonRekognitionFullAccess  
 - AmazonSNSFullAccess  
 - AWSLambdaBasicExecutionRole  
-![jenkins](img/Screenshot 2026-02-23 085023.png)
+![jenkins](img/iam2.png)
 6. Name the role: `Lambda-Rekognition-Role`  
 7. Create role  
 
@@ -118,7 +118,7 @@ This system requires **no servers to manage**, making it scalable, cost-effectiv
 1. Open AWS Lambda  
 2. Click "Create Function"  
 3. Select "Author from scratch"  
-
+![jenkins](img/lam.png)
 ### Basic Configuration
 
 - Function name: `ImageAnalysisFunction`
@@ -156,7 +156,7 @@ Save changes.
 Replace the default Lambda code with your project Python file from this repository.
 
 Deploy the function.
-
+![jenkins](img/lam.png)
 ---
 
 ## Step 7: Add S3 Trigger
@@ -168,7 +168,7 @@ Deploy the function.
 5. Choose bucket: `user-uploaded-images-ai`  
 6. Event type: All object create events  
 7. Add trigger  
-
+![jenkins](img/win.png)
 Now your Lambda will automatically execute when a new image is uploaded.
 
 ---
@@ -191,6 +191,7 @@ Region used: **ap-south-1 (Mumbai)**
 Note: AWS Rekognition must be available in the selected region.
 
 ---
+![jenkins](img/mail.png)
 ##  Security Notes
 
 - Use least privilege IAM permissions in production
