@@ -36,7 +36,7 @@ This system requires **no servers to manage**, making it scalable, cost-effectiv
 - Python 3.12 runtime  
 
 ---
-
+![jenkins](img/work.png)
 ## Architecture Overview
 
 ### Workflow
@@ -73,7 +73,7 @@ This system requires **no servers to manage**, making it scalable, cost-effectiv
 4. Bucket name: `user-uploaded-images-ai`  
 5. Select Region: **ap-south-1 (Mumbai)**  
 6. Keep default settings and create bucket  
-
+![jenkins](img/s3.png)
 ---
 
 ## Step 2: Create SNS Topic
@@ -84,7 +84,7 @@ This system requires **no servers to manage**, making it scalable, cost-effectiv
 4. Topic name: `AI-Rekognito`  
 5. Create topic  
 6. Copy the Topic ARN  
-
+![jenkins](img/sns.png)
 ### Create Email Subscription
 
 1. Open the topic  
@@ -102,17 +102,17 @@ This system requires **no servers to manage**, making it scalable, cost-effectiv
 3. Select AWS Service  
 4. Choose Lambda  
 5. Attach the following policies:
-
+![jenkins](img/iam.png)
 - AmazonS3ReadOnlyAccess  
 - AmazonRekognitionFullAccess  
 - AmazonSNSFullAccess  
 - AWSLambdaBasicExecutionRole  
-
+![jenkins](img/Screenshot 2026-02-23 085023.png)
 6. Name the role: `Lambda-Rekognition-Role`  
 7. Create role  
 
 ---
-
+![jenkins](img/lamda.png)
 ## Step 4: Create Lambda Function
 
 1. Open AWS Lambda  
@@ -146,7 +146,7 @@ Add:
 | MIN_CONFIDENCE | 80 |
 | REGION | ap-south-1 |
 | SNS_ARN | arn:aws:sns:ap-south-1:<YOUR_ACCOUNT_ID>:AI-Rekognito |
-
+![jenkins](img/V.png)
 Save changes.
 
 ---
